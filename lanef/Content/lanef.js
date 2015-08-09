@@ -12876,26 +12876,44 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
 
 (function()
 {
- var Global=this,Runtime=this.IntelliFactory.Runtime,console,lanef,Client;
+ var Global=this,Runtime=this.IntelliFactory.Runtime,List,Html,Client,Tags,EventsPervasives,lanef,Client1;
  Runtime.Define(Global,{
   lanef:{
    Client:{
     Main:Runtime.Field(function()
     {
-     return console?console.log("Running JavaScript Entry Point.."):undefined;
+     var x,welcome,arg10,arg101,x1,arg00;
+     x=List.ofArray([Tags.Tags().text("Welcome")]);
+     welcome=Tags.Tags().NewTag("p",x);
+     arg101=List.ofArray([Tags.Tags().text("Click me")]);
+     x1=Tags.Tags().NewTag("button",arg101);
+     arg00=function()
+     {
+      return function()
+      {
+       return welcome.set_Text("Salvete, sodales");
+      };
+     };
+     EventsPervasives.Events().OnClick(arg00,x1);
+     arg10=List.ofArray([welcome,x1]);
+     return Tags.Tags().NewTag("div",arg10).AppendTo("entrypoint");
     })
    }
   }
  });
  Runtime.OnInit(function()
  {
-  console=Runtime.Safe(Global.console);
+  List=Runtime.Safe(Global.WebSharper.List);
+  Html=Runtime.Safe(Global.WebSharper.Html);
+  Client=Runtime.Safe(Html.Client);
+  Tags=Runtime.Safe(Client.Tags);
+  EventsPervasives=Runtime.Safe(Client.EventsPervasives);
   lanef=Runtime.Safe(Global.lanef);
-  return Client=Runtime.Safe(lanef.Client);
+  return Client1=Runtime.Safe(lanef.Client);
  });
  Runtime.OnLoad(function()
  {
-  Client.Main();
+  Client1.Main();
   return;
  });
 }());
